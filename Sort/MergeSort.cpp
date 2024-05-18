@@ -38,8 +38,13 @@ int main()
 	vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 	// shuffle.
+#if __cplusplus >= 201703L 
+	random_device rd;
+	shuffle(vec.begin(), vec.end(), default_random_engine(rd()));
+#else
 	srand(time(NULL));
 	random_shuffle(vec.begin(), vec.end());
+#endif
     
     
 
